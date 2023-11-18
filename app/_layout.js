@@ -10,7 +10,13 @@ import * as SplashScreen from "expo-splash-screen";
 //SplashScreen.preventAutoHideAsync();
 
 const Layout = () => {
-    return <Stack />
+    return (
+    <Stack 
+        screenOptions={{
+            headerShown: false
+        }}
+    />
+    )
 }
 
 export default Layout;

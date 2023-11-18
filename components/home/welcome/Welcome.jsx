@@ -5,16 +5,19 @@ import {
   TouchableOpacity,
   Image,
   FlatList,
+  ImageBackground
 } from "react-native";
 
 // Import styles for this component
 import styles from "./welcome.style";
 
-const Welcome = () => {
+const Welcome = ({ welcomeBackground, handlePress }) => {
   return (
     <View style={styles.container}>
-      <Text>Welcome text in a container</Text>
-    </View>
+    <ImageBackground source={welcomeBackground} resizeMode="cover" style={styles.image}>
+      <Text style={styles.text}>Climby</Text>
+    </ImageBackground>
+  </View>
   )
 };
 
