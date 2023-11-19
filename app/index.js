@@ -11,7 +11,11 @@ const Home = () => {
     const router = useRouter();
 
     return (
-        <Welcome welcomeBackground={images.welcomeBackground} handlePress={() => { }} />
+        
+        <Welcome welcomeBackground={images.welcomeBackground} handlePress={() => {
+            router.push("/home");
+            console.log("pressed");
+        }} />
 
     )
 };

@@ -15,7 +15,9 @@ const Welcome = ({ welcomeBackground, handlePress }) => {
   return (
     <View style={styles.container}>
     <ImageBackground source={welcomeBackground} resizeMode="cover" style={styles.image}>
-      <Text style={styles.text}>Climby</Text>
+      <TouchableOpacity onPress={handlePress}>
+        <Text style={styles.text}>Climby</Text>
+      </TouchableOpacity>
     </ImageBackground>
   </View>
   )
