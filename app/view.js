@@ -7,7 +7,7 @@ import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet } fro
 import { Welcome } from "../components";
 import { images } from "../constants";
 
-const View = () => {
+const ViewAll = () => {
     const router = useRouter();
 
     return (
@@ -15,4 +15,4 @@ const View = () => {
     )
 };
 
-export default View;
+export default ViewAll;
