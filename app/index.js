@@ -7,7 +7,6 @@ import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet, Touc
 import { Welcome } from "../components";
 import { images } from "../constants";
 import ViewAll from "./view";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Home = () => {
     const router = useRouter();

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "top",
+        justifyContent: "center",
         marginVertical: 25
     },
     fixToText: {
