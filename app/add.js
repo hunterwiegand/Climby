@@ -4,14 +4,17 @@ import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet } fro
 // Can this on "View" as a <div> and "Text" as <p>
 
 // Local imports
-import { Welcome } from "../components";
+import { Welcome, Nav, AddClimbForm } from "../components";
 import { images } from "../constants";
 
 const Add = () => {
     const router = useRouter();
 
     return (
-        <Text>ADD CLIMB PAGE</Text>
+        <ScrollView>
+            <Nav></Nav>
+            <AddClimbForm></AddClimbForm>
+        </ScrollView>
     )
 };
 
