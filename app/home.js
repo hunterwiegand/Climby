@@ -14,8 +14,6 @@ const home = () => {
             <Nav></Nav>
             <AddClimb></AddClimb>
         </ScrollView>
-
-
     )
 };
 
