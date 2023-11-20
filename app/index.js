@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet, Touchable } from "react-native";
+import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
 // Can this on "View" as a <div> and "Text" as <p>
 
 // Local imports
@@ -15,8 +15,7 @@ const Home = () => {
     return (
         
         <Welcome welcomeBackground={images.welcomeBackground} handlePress={() => {
-            console.log("pressed");
-            router.push("/view");
+            router.push("/home");
         }} />
     )
 };
