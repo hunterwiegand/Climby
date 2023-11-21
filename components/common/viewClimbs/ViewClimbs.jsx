@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   View,
   Text,
@@ -12,8 +13,9 @@ import styles from "./viewclimbs.style";
 import icons from "../../../assets/icons";
 import ClimbCard from "../Cards/ClimbCard/climbCard";
 
-const ViewClimbs = (text) => {
-  const router = useRouter();
+const ViewClimbs = () => {
+
+  const [searchTerm, setSearchTerm] = useState();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -28,11 +30,13 @@ const ViewClimbs = (text) => {
       <View style={styles.searchContainer}>
         <View style={styles.searchWrapper}>
           <TextInput 
+            value={searchTerm}
             style={styles.searchInput}
+            onChangeText={(text) => setSearchTerm(text)}
             placeholder="Search for a climb"
           />
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={() => alert({text})}>
+        <TouchableOpacity style={styles.searchBtn} onPress={() => alert(searchTerm)}>
           <Image 
             source={icons.search}
             resizeMode="contain"
