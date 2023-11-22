@@ -6,7 +6,6 @@ import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet, Touc
 // Local imports
 import { Welcome } from "../components";
 import { images } from "../constants";
-import ViewAll from "./view";
 
 const Home = () => {
     const router = useRouter();

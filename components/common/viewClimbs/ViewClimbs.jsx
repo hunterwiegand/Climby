@@ -1,21 +1,78 @@
-import { View, Text, TouchableOpacity, Image, SafeAreaView } from "react-native";
-import {useRouter} from 'expo-router';
+import { useState } from 'react'
+import {
+  View,
+  Text,
+  Alert,
+  TouchableOpacity,
+  Image,
+  SafeAreaView,
+  TextInput,
+  Modal,
+  Pressable
+} from "react-native";
+import { useRouter } from "expo-router";
 
 import styles from "./viewclimbs.style";
 import icons from "../../../assets/icons";
-import ClimbCard from "../Cards/ClimbCard/climbCard"
+import ClimbCard from "../Cards/ClimbCard/climbCard";
 
 const ViewClimbs = () => {
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.fixToText}>
-        <TouchableOpacity onPress={() => alert('There will be a side menu I swear')}>
-          <Image style={{width:35, height:35}} source={icons.filter}/>
-        </TouchableOpacity>
+  const [searchTerm, setSearchTerm] = useState();
+  const [modalVisible, setModalVisible] = useState(false);
 
-        <TouchableOpacity onPress={() => alert('you made it')}>
-          <Image style={{width:35, height:35}} source={icons.search}/>
+  return (
+
+    
+    <SafeAreaView style={styles.container}>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Hello World!</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}>
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+
+      <View style={styles.searchContainer}>
+      <View style={styles.searchBtn}>
+        <TouchableOpacity
+          style={styles.searchBtn}
+          onPress={() => setModalVisible(!modalVisible)}
+        >
+          <Image 
+          style={styles.searchBtnImage} 
+          resizeMode='contain'
+          source={icons.filter}
+           />
+        </TouchableOpacity>
+      </View>
+        <View style={styles.searchWrapper}>
+          <TextInput 
+            value={searchTerm}
+            style={styles.searchInput}
+            onChangeText={(text) => setSearchTerm(text)}
+            placeholder="Search for a climb"
+          />
+        </View>
+        <TouchableOpacity style={styles.searchBtn} onPress={() => alert(searchTerm)}>
+          <Image 
+            source={icons.search}
+            resizeMode="contain"
+            style={styles.searchBtnImage}
+          />
         </TouchableOpacity>
       </View>
 
