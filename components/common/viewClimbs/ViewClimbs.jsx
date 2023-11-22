@@ -8,7 +8,8 @@ import {
   SafeAreaView,
   TextInput,
   Modal,
-  Pressable
+  Pressable,
+  FlatList
 } from "react-native";
 import { useRouter } from "expo-router";
 
@@ -36,7 +37,7 @@ const ViewClimbs = () => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <Text>Filter</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
