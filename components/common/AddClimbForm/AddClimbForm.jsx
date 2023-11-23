@@ -4,10 +4,6 @@ import {
     View,
     TextInput,
     Text,
-    StyleSheet,
-    ViewStyle,
-    TextStyle,
-    TextInputProps,
     Button,
     TouchableOpacity,
     Image,
@@ -15,15 +11,6 @@ import {
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 
-import {
-    Control,
-    FieldValues,
-    Path,
-    RegisterOptions,
-} from 'react-hook-form';
-import { useController, useForm, Controller } from 'react-hook-form';
-
-import MediaPicker from "../MediaPicker/MediaPicker.jsx";
 import styles from "./addClimbForm.style.js";
 import Climb from "../../../database/example.js";
 
@@ -35,17 +22,17 @@ const AddClimbForm = () => {
     const [style, setStyle] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
-    const img = "";
 
     const handleSubmit = () => {
 
         const test = new Climb(name, grade, style, date, description);
-        console.log(test.name);
+        //console.log(test.name);
         // console.log(test.grade);
         // console.log(test.style);
         // console.log(test.date);
         // console.log(test.description);
         console.log("imageURL", file);
+        console.log(test);
 
         setName("");
         setGrade("");
