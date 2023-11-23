@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
       },
       centeredView: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'top',
         alignItems: 'center',
         marginTop: 22,
       },
