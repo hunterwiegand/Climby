@@ -1,137 +1,98 @@
-import React, { useState } from "react"; 
-import { View, Text, Image, TouchableOpacity,  
-    StyleSheet, Alert } from "react-native"; 
-import * as ImagePicker from "expo-image-picker";
+import * as React from "react";
+import { useState } from "react";
+import {
+    View,
+    TextInput,
+    Text,
+    StyleSheet,
+    ViewStyle,
+    TextStyle,
+    TextInputProps,
+    Button
+} from "react-native";
+
+import {
+    Control,
+    FieldValues,
+    Path,
+    RegisterOptions,
+} from 'react-hook-form';
+import { useController, useForm, Controller } from 'react-hook-form';
 
 import MediaPicker from "../MediaPicker/MediaPicker.jsx";
+import styles from "./addClimbForm.style.js";
+import Climb from "../../../database/example.js";
 
-
-
-// const AddClimbForm = () => {
-
-//     // Stores the selected image URI 
-//     const [file, setFile] = useState(null); 
-  
-//     // Stores any error message 
-//     const [error, setError] = useState(null); 
-  
-//     // Function to pick an image from  
-//     //the device's media library 
-//     const pickImage = async () => { 
-//         const { status } = await ImagePicker. 
-//             requestMediaLibraryPermissionsAsync(); 
-  
-//         if (status !== "granted") { 
-  
-//             // If permission is denied, show an alert 
-//             Alert.alert( 
-//                 "Permission Denied", 
-//                 `Sorry, we need camera  
-//                  roll permission to upload images.` 
-//             ); 
-//         } else { 
-  
-//             // Launch the image library and get 
-//             // the selected image 
-//             const result = 
-//                 await ImagePicker.launchImageLibraryAsync(); 
-  
-//             if (!result.cancelled) { 
-  
-//                 // If an image is selected (not cancelled),  
-//                 // update the file state variable 
-//                 // console.log(result.assets[0].uri)
-//                 setFile(result.assets[0].uri); 
-  
-//                 // Clear any previous errors 
-//                 setError(null); 
-//             } 
-//         } 
-//     };
-
-//     return ( 
-//         <View style={styles.container}> 
-//             <Text style={styles.header}> 
-//                 Add Image: 
-//             </Text> 
-  
-//             {/* Button to choose an image */} 
-//             <TouchableOpacity style={styles.button} 
-//                 onPress={pickImage}> 
-//                 <Text style={styles.buttonText}> 
-//                     Choose Image 
-//                 </Text> 
-//             </TouchableOpacity> 
-  
-//             {/* Conditionally render the image  
-//             or error message */} 
-//             {file ? ( 
-//                 // Display the selected image 
-//                 <View style={styles.imageContainer}> 
-//                     <Image source={{ uri: file }} 
-//                         style={styles.image} /> 
-//                 </View> 
-//             ) : ( 
-//                 // Display an error message if there's  
-//                 // an error or no image selected 
-//                 <Text style={styles.errorText}>{error}</Text> 
-//             )} 
-//         </View> 
-//     ); 
-// } 
-  
-// const styles = StyleSheet.create({ 
-//     container: { 
-//         flex: 1, 
-//         justifyContent: "center", 
-//         alignItems: "center", 
-//         padding: 16, 
-//     }, 
-//     header: { 
-//         fontSize: 20, 
-//         marginBottom: 16, 
-//     }, 
-//     button: { 
-//         backgroundColor: "#007AFF", 
-//         padding: 10, 
-//         borderRadius: 8, 
-//         marginBottom: 16, 
-//         shadowColor: "#000000", 
-//         shadowOffset: { width: 0, height: 2 }, 
-//         shadowOpacity: 0.4, 
-//         shadowRadius: 4, 
-//         elevation: 5, 
-//     }, 
-//     buttonText: { 
-//         color: "#FFFFFF", 
-//         fontSize: 16, 
-//         fontWeight: "bold", 
-//     }, 
-//     imageContainer: { 
-//         borderRadius: 8, 
-//         marginBottom: 16, 
-//         shadowColor: "#000000", 
-//         shadowOffset: { width: 0, height: 2 }, 
-//         shadowOpacity: 0.4, 
-//         shadowRadius: 4, 
-//         elevation: 5, 
-//     }, 
-//     image: { 
-//         width: 200, 
-//         height: 200, 
-//         borderRadius: 8, 
-//     }, 
-//     errorText: { 
-//         color: "red", 
-//         marginTop: 16, 
-//     }, 
-// });
 
 const AddClimbForm = () => {
+
+    const [name, setName] = useState("");
+    const [grade, setGrade] = useState("");
+    const [style, setStyle] = useState("");
+    const [date, setDate] = useState("");
+    const [description, setDescription] = useState("");
+
+    const handleSubmit = () => {
+
+        const test = new Climb(name, grade, style, date, description);
+        console.log(test.name);
+        console.log(test.grade);
+        console.log(test.style);
+        console.log(test.date);
+        console.log(test.description);
+
+        setName("");
+        setGrade("");
+        setStyle("");
+        setDate("");
+        setDescription("");
+    }
+    
+
     return (
-        <MediaPicker></MediaPicker>
-        
+        <View style={styles.container}>
+            <View style={styles.form}>
+                <MediaPicker />
+                <Text style={styles.label}>Climb Name</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="name"
+                    value={name}
+                    onChangeText={setName}
+                />
+                <Text style={styles.label}>Climb grade</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="v5"
+                    value={grade}
+                    onChangeText={setGrade}
+                />
+                <Text style={styles.label}>Climb style</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="overhang"
+                    value={style}
+                    onChangeText={setStyle}
+                />
+                <Text style={styles.label}>Date</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="11/22/23"
+                    value={date}
+                    onChangeText={setDate}
+                />
+                <Text style={styles.label}>Climb notes</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="description"
+                    value={description}
+                    onChangeText={setDescription}
+                />
+                <Button title="Submit" onPress={handleSubmit} />
+            </View>
+        </View>
+
+
     )
 }
-
 export default AddClimbForm;

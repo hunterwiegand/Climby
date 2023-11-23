@@ -52,15 +52,12 @@ const MediaPicker = () => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>
-                Add Image:
-            </Text>
 
             {/* Button to choose an image */}
             <TouchableOpacity style={styles.button}
                 onPress={pickImage}>
                 <Text style={styles.buttonText}>
-                    Choose Image
+                    Choose Climb Image
                 </Text>
             </TouchableOpacity>
 
