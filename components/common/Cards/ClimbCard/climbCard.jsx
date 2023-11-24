@@ -6,7 +6,6 @@ import {
   Modal,
   Pressable,
   ScrollView,
-  RefreshControl,
 } from "react-native";
 import { useState } from "react";
 
@@ -17,7 +16,6 @@ import climbArr from "../../../../database/dummyData";
 
 const climbCard = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [climbData, setClimbData] = useState();
 
   return (
     <ScrollView>
@@ -33,11 +31,11 @@ const climbCard = () => {
               >
                 <View style={styles.centeredView}>
                   <View style={styles.modalView}>
-                    <Text>{this.state.name}</Text>
-                    <Text>Grade: {this.state.grade}</Text>
-                    <Text>Style: {this.state.style}</Text>
-                    <Text>Date: {this.state.date}</Text>
-                    <Text>{this.state.description}</Text>
+                    <Text>{}</Text>
+                    <Text>Grade: {}</Text>
+                    <Text>Style: {}</Text>
+                    <Text>Date: {}</Text>
+                    <Text>{}</Text>
                     <Text>We will add some photos here</Text>
                     <Pressable
                       style={[styles.button, styles.buttonClose]}
@@ -50,6 +48,7 @@ const climbCard = () => {
               </Modal>
         {climbArr.map((climb) => {
 
+            
           return (
             <View style={styles.container}>
 
@@ -61,7 +60,7 @@ const climbCard = () => {
               <TouchableOpacity
                 style={styles.textContainer}
                 onPress={() => {
-                  setModalVisible(!modalVisible), setClimbData(climb[0]);
+                  setModalVisible(!modalVisible)
                 }}
               >
                   <View style={styles.textName}>

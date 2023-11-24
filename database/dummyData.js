@@ -9,6 +9,4 @@ const climb5 = new Climb("...", 4, "slab", "10/9/23", "Slab be slabbin", "https:
 
 let arr = [climb0, climb1, climb2, climb3, climb4, climb5];
 
-console.log(arr)
-
 export default arr;
