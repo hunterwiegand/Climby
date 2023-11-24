@@ -13,14 +13,12 @@ const Nav = () => {
             <View style={styles.fixToText}>
                 <TouchableOpacity>
                     <Text style={styles.button} onPress={() => {
-                        Alert.alert("Redirct to addClimbPage")
                         router.push("/add")
                     }}>Add New Climb</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity>
                     <Text style={styles.button} onPress={() => {
-                        Alert.alert("Redirct to viewClimbsPage")
                         router.push("/view")
                     }}>View All Climbs</Text>
                 </TouchableOpacity>
