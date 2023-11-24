@@ -15,6 +15,7 @@ import { Video, ResizeMode } from 'expo-av';
 
 import styles from "./addClimbForm.style.js";
 import Climb from "../../../database/example.js";
+import { uploadToFirebase } from "../../../firebase-config.js";
 
 
 const AddClimbForm = () => {
@@ -68,6 +69,7 @@ const AddClimbForm = () => {
                 if (result.assets[0].uri.includes(".mp4")) {
                     console.log("This is a video");
                     setIsVideo(true);
+                    console.log(result.assets[0]);
                 } else {
                     console.log("This is an image");
                 };
@@ -86,18 +88,25 @@ const AddClimbForm = () => {
     };
 
     // Function after form is sumbitted
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
-        const test = new Climb(name, grade, style, date, description, file);
-        //console.log(test.name);
-        // console.log(test.grade);
-        // console.log(test.style);
-        // console.log(test.date);
-        // console.log(test.description);
-        console.log("imageURL", file);
-        console.log(test);
-        console.log(isVideo);
+        try {
+            const test = new Climb(name, grade, style, date, description, file);
+            const metadata = {
+                customMetadata : test
+            }
+            const uploadResponse = await uploadToFirebase(file, file.split("/").pop(), metadata);
+            console.log(uploadResponse);
+        } catch (e) {
+            Alert.alert("Error Uploading Climb ", e.message);
+        }
 
+
+
+
+        // console.log("imageURL", file);
+        // console.log(test);
+        // console.log(isVideo);
 
         setName("");
         setGrade("");
@@ -157,48 +166,48 @@ const AddClimbForm = () => {
                     ) : (
                         // Display an error message if there's  
                         // an error or no image selected
-                        <Text style = {styles.errorText}>{error}</Text>
+                        <Text style={styles.errorText}>{error}</Text>
                     )}
+                </View>
+
+
+                <Text style={styles.label}>Climb Name</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="name"
+                    value={name}
+                    onChangeText={setName}
+                />
+                <Text style={styles.label}>Climb grade</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="v5"
+                    value={grade}
+                    onChangeText={setGrade}
+                />
+                <Text style={styles.label}>Climb style</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="overhang"
+                    value={style}
+                    onChangeText={setStyle}
+                />
+                <Text style={styles.label}>Date</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="11/22/23"
+                    value={date}
+                    onChangeText={setDate}
+                />
+                <Text style={styles.label}>Climb notes</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="description"
+                    value={description}
+                    onChangeText={setDescription}
+                />
+                <Button title="Submit" onPress={handleSubmit} />
             </View>
-
-
-            <Text style={styles.label}>Climb Name</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="name"
-                value={name}
-                onChangeText={setName}
-            />
-            <Text style={styles.label}>Climb grade</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="v5"
-                value={grade}
-                onChangeText={setGrade}
-            />
-            <Text style={styles.label}>Climb style</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="overhang"
-                value={style}
-                onChangeText={setStyle}
-            />
-            <Text style={styles.label}>Date</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="11/22/23"
-                value={date}
-                onChangeText={setDate}
-            />
-            <Text style={styles.label}>Climb notes</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="description"
-                value={description}
-                onChangeText={setDescription}
-            />
-            <Button title="Submit" onPress={handleSubmit} />
-        </View>
         </View >
 
 
