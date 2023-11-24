@@ -11,4 +11,4 @@ let arr = [climb0, climb1, climb2, climb3, climb4, climb5];
 
 console.log(arr)
 
-return arr;
+export default arr;
