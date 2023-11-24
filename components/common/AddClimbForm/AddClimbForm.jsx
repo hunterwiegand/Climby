@@ -10,6 +10,8 @@ import {
     Alert
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { Video, ResizeMode } from 'expo-av';
+
 
 import styles from "./addClimbForm.style.js";
 import Climb from "../../../database/example.js";
@@ -31,8 +33,8 @@ const AddClimbForm = () => {
         // console.log(test.style);
         // console.log(test.date);
         // console.log(test.description);
-        console.log("imageURL", file);
-        console.log(test);
+        //console.log("imageURL", file);
+        //console.log(test);
 
         setName("");
         setGrade("");
@@ -43,6 +45,9 @@ const AddClimbForm = () => {
 
         Alert.alert("Climb added");
     };
+
+    const video = React.useRef(null);
+    const [status, setStatus] = useState({});
 
 
     // Stores the selected image URI 
@@ -78,10 +83,27 @@ const AddClimbForm = () => {
             if (!result.canceled) {
 
                 // If an image is selected (not cancelled),  
-                // update the file state variable 
-                setFile(result.assets[0].uri);
-                console.log(result.assets[0]);
+                // update the file state variable
+                
+                let test = result.assets[0].uri;
+                let vid = ".mp4";
+                let test2 = "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FClimby-f9634f5b-366a-4190-9ef7-616f98661be2/ImagePicker/1658e35b-3a62-4b38-9517-1167b3ed13f2.mp4";
 
+                if (test.includes(vid)) {
+                    console.log("test1 is Video");
+                };
+
+                if (test2.includes(vid)) {
+                    console.log("test2 is video");
+                }
+                //console.log("hasMP4:", result.assets[0].uri.includes(".mp4)"))
+
+                
+                //console.log(result.assets[0]);
+
+                setFile(result.assets[0].uri);
+
+                //console.log("file: ", file);
 
                 // Clear any previous errors 
                 setError(null);
@@ -108,21 +130,34 @@ const AddClimbForm = () => {
 
                     {/* Conditionally render the image  
             or error message */}
-                    {file ? (
-
+                    {file.includes(".mp4") ? (
+                        
                         // Display the selected image 
                         <View style={styles.imageContainer}>
-                            <Image source={{ uri: file }}
-                                style={styles.image} />
-                            {/* Not working for adding a video */}
-                            {/* <Video
-                        ref={file}
-                        source={{ uri: file }}
-                        useNativeControls
-                        resizeMode="contain"
-                        isLooping={false}
-                        isMuted={false}
-                    /> */}
+
+                            {/* <Image source={{ uri: file }}
+                                style={styles.image} /> */}
+
+                            <Video
+                                ref={video}
+                                style={styles.video}
+                                source={{
+                                    uri: file,
+                                }}
+                                useNativeControls
+                                resizeMode={ResizeMode.CONTAIN}
+                                isLooping
+                                onPlaybackStatusUpdate={status => setStatus(() => status)}
+                                onPress={() =>
+                                    status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+                                }
+                            />
+
+
+
+
+
+
                         </View>
                     ) : (
                         // Display an error message if there's  
