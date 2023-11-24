@@ -71,11 +71,17 @@ const styles = StyleSheet.create({
         width: 200, 
         height: 200, 
         borderRadius: 8, 
-    }, 
+    },
+    video: { 
+        width: 200, 
+        height: 200, 
+        borderRadius: 8, 
+    },  
     errorText: { 
         color: "red", 
         marginTop: 16, 
     },
+
 
 });
 

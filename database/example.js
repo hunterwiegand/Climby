@@ -1,10 +1,11 @@
 module.exports = class Climb {
-    constructor( name, grade, style, date, description) {
+    constructor( name, grade, style, date, description, file) {
         this.name = name;
         this.grade = grade;
         this.style = style;
         this.date = date;
         this.description = description;
+        this.file = file;
     };
 }
 
