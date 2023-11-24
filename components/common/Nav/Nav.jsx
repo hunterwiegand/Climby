@@ -1,4 +1,4 @@
-import { View, TouchableOpacity, Text, Button, SafeAreaView, Alert } from "react-native";
+import { View, TouchableOpacity, Text, Button, SafeAreaView, Alert, ActivityIndicator } from "react-native";
 import { useRouter } from "expo-router";
 
 import styles from "./nav.style";
@@ -20,7 +20,6 @@ const Nav = () => {
 
                 <TouchableOpacity>
                     <Text style={styles.button} onPress={() => {
-                        Alert.alert("Redirct to viewClimbsPage")
                         router.push("/view")
                     }}>View All Climbs</Text>
                 </TouchableOpacity>
