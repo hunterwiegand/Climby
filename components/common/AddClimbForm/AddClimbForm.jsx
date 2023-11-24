@@ -24,27 +24,7 @@ const AddClimbForm = () => {
     const [style, setStyle] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
-
-    const handleSubmit = () => {
-
-        const test = new Climb(name, grade, style, date, description);
-        //console.log(test.name);
-        // console.log(test.grade);
-        // console.log(test.style);
-        // console.log(test.date);
-        // console.log(test.description);
-        //console.log("imageURL", file);
-        //console.log(test);
-
-        setName("");
-        setGrade("");
-        setStyle("");
-        setDate("");
-        setDescription("");
-        setFile("");
-
-        Alert.alert("Climb added");
-    };
+    const [isVideo, setIsVideo] = useState(false);
 
     const video = React.useRef(null);
     const [status, setStatus] = useState({});
@@ -84,24 +64,18 @@ const AddClimbForm = () => {
 
                 // If an image is selected (not cancelled),  
                 // update the file state variable
-                
-                let test = result.assets[0].uri;
-                let vid = ".mp4";
-                let test2 = "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FClimby-f9634f5b-366a-4190-9ef7-616f98661be2/ImagePicker/1658e35b-3a62-4b38-9517-1167b3ed13f2.mp4";
 
-                if (test.includes(vid)) {
-                    console.log("test1 is Video");
+                if (result.assets[0].uri.includes(".mp4")) {
+                    console.log("This is a video");
+                    setIsVideo(true);
+                } else {
+                    console.log("This is an image");
                 };
 
-                if (test2.includes(vid)) {
-                    console.log("test2 is video");
-                }
-                //console.log("hasMP4:", result.assets[0].uri.includes(".mp4)"))
-
-                
                 //console.log(result.assets[0]);
 
-                setFile(result.assets[0].uri);
+                //setFile(result.assets[0].uri);
+                setFile("///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FClimby-91bb8297-2eb8-4def-b960-324105846193/ImagePicker/c7572ebd-ff72-475e-a67f-44a5c257ebfc.mp4");
 
                 //console.log("file: ", file);
 
@@ -111,13 +85,38 @@ const AddClimbForm = () => {
         }
     };
 
+    // Function after form is sumbitted
+    const handleSubmit = () => {
+
+        const test = new Climb(name, grade, style, date, description, file);
+        //console.log(test.name);
+        // console.log(test.grade);
+        // console.log(test.style);
+        // console.log(test.date);
+        // console.log(test.description);
+        console.log("imageURL", file);
+        console.log(test);
+        console.log(isVideo);
+
+
+        setName("");
+        setGrade("");
+        setStyle("");
+        setDate("");
+        setDescription("");
+        setFile("");
+        setIsVideo(false);
+
+
+        Alert.alert("Climb added");
+    };
+
 
     return (
         <View style={styles.container}>
             <View style={styles.form}>
 
 
-                {/* <MediaPicker value={img}/> */}
 
                 <View style={styles.imgContainer}>
                     {/* Button to choose an image */}
@@ -130,13 +129,10 @@ const AddClimbForm = () => {
 
                     {/* Conditionally render the image  
             or error message */}
-                    {file.includes(".mp4") ? (
-                        
+                    {file && isVideo ? (
+
                         // Display the selected image 
                         <View style={styles.imageContainer}>
-
-                            {/* <Image source={{ uri: file }}
-                                style={styles.image} /> */}
 
                             <Video
                                 ref={video}
@@ -152,62 +148,58 @@ const AddClimbForm = () => {
                                     status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
                                 }
                             />
-
-
-
-
-
-
+                        </View>
+                    ) : file && !isVideo ? (
+                        <View style={style.container}>
+                            <Image source={{ uri: file }}
+                                style={styles.image} />
                         </View>
                     ) : (
                         // Display an error message if there's  
-                        // an error or no image selected 
-                        <Text style={styles.errorText}>{error}</Text>
+                        // an error or no image selected
+                        <Text style = {styles.errorText}>{error}</Text>
                     )}
-                </View>
-
-
-
-
-
-                <Text style={styles.label}>Climb Name</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="name"
-                    value={name}
-                    onChangeText={setName}
-                />
-                <Text style={styles.label}>Climb grade</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="v5"
-                    value={grade}
-                    onChangeText={setGrade}
-                />
-                <Text style={styles.label}>Climb style</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="overhang"
-                    value={style}
-                    onChangeText={setStyle}
-                />
-                <Text style={styles.label}>Date</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="11/22/23"
-                    value={date}
-                    onChangeText={setDate}
-                />
-                <Text style={styles.label}>Climb notes</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="description"
-                    value={description}
-                    onChangeText={setDescription}
-                />
-                <Button title="Submit" onPress={handleSubmit} />
             </View>
+
+
+            <Text style={styles.label}>Climb Name</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="name"
+                value={name}
+                onChangeText={setName}
+            />
+            <Text style={styles.label}>Climb grade</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="v5"
+                value={grade}
+                onChangeText={setGrade}
+            />
+            <Text style={styles.label}>Climb style</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="overhang"
+                value={style}
+                onChangeText={setStyle}
+            />
+            <Text style={styles.label}>Date</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="11/22/23"
+                value={date}
+                onChangeText={setDate}
+            />
+            <Text style={styles.label}>Climb notes</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="description"
+                value={description}
+                onChangeText={setDescription}
+            />
+            <Button title="Submit" onPress={handleSubmit} />
         </View>
+        </View >
 
 
     )
