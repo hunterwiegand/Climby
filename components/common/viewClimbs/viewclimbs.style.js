@@ -82,6 +82,16 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         textAlign: 'center',
       },
+      checkboxContainer: {
+        flexDirection: 'row',
+        marginBottom: 20,
+      },
+      checkbox: {
+        alignSelf: 'center',
+      },
+      label: {
+        margin: 8,
+      }
 })
 
 export default styles;

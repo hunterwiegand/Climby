@@ -9,7 +9,6 @@ import {
   TextInput,
   Modal,
   Pressable,
-  FlatList
 } from "react-native";
 import { useRouter } from "expo-router";
 
@@ -19,7 +18,7 @@ import ClimbCard from "../Cards/ClimbCard/climbCard";
 
 const ViewClimbs = () => {
 
-  const [searchTerm, setSearchTerm] = useState();
+  const [searchTerm, setSearchTerm] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -37,7 +36,8 @@ const ViewClimbs = () => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text>Filter</Text>
+            <View style={styles.checkboxContainer}>
+            </View>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>
@@ -68,7 +68,17 @@ const ViewClimbs = () => {
             placeholder="Search for a climb"
           />
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={() => alert(searchTerm)}>
+        <TouchableOpacity 
+        style={styles.searchBtn}
+        searchTerm={searchTerm} 
+        setSearchTerm={setSearchTerm}
+        // onPress={() => alert(searchTerm)}
+        onPress={() => {
+          if (searchTerm) {
+            alert(`${searchTerm} found`)
+          }
+        }}
+        >
           <Image 
             source={icons.search}
             resizeMode="contain"
