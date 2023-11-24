@@ -74,8 +74,8 @@ const AddClimbForm = () => {
 
                 //console.log(result.assets[0]);
 
-                //setFile(result.assets[0].uri);
-                setFile("///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FClimby-91bb8297-2eb8-4def-b960-324105846193/ImagePicker/c7572ebd-ff72-475e-a67f-44a5c257ebfc.mp4");
+                setFile(result.assets[0].uri);
+                //setFile("///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FClimby-91bb8297-2eb8-4def-b960-324105846193/ImagePicker/c7572ebd-ff72-475e-a67f-44a5c257ebfc.mp4");
 
                 //console.log("file: ", file);
 
