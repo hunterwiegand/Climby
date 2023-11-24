@@ -141,7 +141,7 @@ const AddClimbForm = () => {
                                     uri: file,
                                 }}
                                 useNativeControls
-                                resizeMode={ResizeMode.CONTAIN}
+                                resizeMode={ResizeMode.COVER}
                                 isLooping
                                 onPlaybackStatusUpdate={status => setStatus(() => status)}
                                 onPress={() =>
@@ -150,7 +150,7 @@ const AddClimbForm = () => {
                             />
                         </View>
                     ) : file && !isVideo ? (
-                        <View style={style.container}>
+                        <View style={style.imageContainer}>
                             <Image source={{ uri: file }}
                                 style={styles.image} />
                         </View>

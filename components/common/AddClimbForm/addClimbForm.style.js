@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         textAlign: "center"
     }, 
     imageContainer: { 
-        borderRadius: 8, 
+        borderRadius: 9, 
         marginBottom: 16,
         shadowOffset: { width: 0, height: 2 }, 
         shadowOpacity: 0.4, 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     video: { 
         width: 200, 
         height: 200, 
-        borderRadius: 8, 
+        borderRadius: 8
     },  
     errorText: { 
         color: "red", 
