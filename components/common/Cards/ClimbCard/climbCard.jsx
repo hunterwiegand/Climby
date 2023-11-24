@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ImageBackground, Modal, Pressable, ActivityIndicator } from "react-native";
+import { View, Text, TouchableOpacity, ImageBackground, Modal, Pressable, ScrollView, RefreshControl } from "react-native";
 import {useState} from 'react';
 
 import styles from "./climbcard.style";
@@ -9,6 +9,7 @@ const test = new Climb("The Good One", 3, "static", "10/10/2023", "It good")
 
 const climbCard = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
   return (
 
@@ -40,21 +41,22 @@ const climbCard = () => {
             </View>
         </Modal>
 
-        
-        <TouchableOpacity style={styles.textContainer} onPress={() => setModalVisible(!modalVisible)}>
-            <ImageBackground 
-            source={images.welcomeBackground} 
-            resizeMode="contain"
-            style={styles.image}>
-                <View style={styles.textName}>
-                    <Text style={styles.text}>{test.name}</Text>
-                </View>
-                <View style={styles.textBody}>
-                    <Text style={styles.text}>{test.grade}</Text>
-                    <Text style={styles.text}>{test.date}</Text>
-                </View>
-            </ImageBackground>
-        </TouchableOpacity>
+        <ScrollView showsVerticalScrollIndicator={true} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}>
+            <TouchableOpacity style={styles.textContainer} onPress={() => setModalVisible(!modalVisible)}>
+                <ImageBackground 
+                source={images.welcomeBackground} 
+                resizeMode="contain"
+                style={styles.image}>
+                    <View style={styles.textName}>
+                        <Text style={styles.text}>{test.name}</Text>
+                    </View>
+                    <View style={styles.textBody}>
+                        <Text style={styles.text}>{test.grade}</Text>
+                        <Text style={styles.text}>{test.date}</Text>
+                    </View>
+                </ImageBackground>
+            </TouchableOpacity>
+        </ScrollView>
     </View>
   )
 }
