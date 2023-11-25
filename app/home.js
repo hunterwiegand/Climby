@@ -4,7 +4,7 @@ import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet } fro
 // Can this on "View" as a <div> and "Text" as <p>
 
 // Local imports
-import { Nav, AddClimb } from "../components";
+import { Nav, AddClimb, RecentClimbs } from "../components";
 import { images } from "../constants";
 
 const home = () => {
@@ -13,6 +13,7 @@ const home = () => {
         <ScrollView>
             <Nav></Nav>
             <AddClimb></AddClimb>
+            <RecentClimbs></RecentClimbs>
         </ScrollView>
     )
 };
