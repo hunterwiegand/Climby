@@ -7,7 +7,7 @@ import { FIREBASE_API_KEY, FIREBASE_STORAGE_BUCKET, FIREBASE_APP_ID, FIREBASE_AU
 // import {...} from "firebase/database";
 // import {...} from "firebase/firestore";
 // import {...} from "firebase/functions";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll } from "firebase/storage";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -65,6 +65,18 @@ const uploadToFirebase = async (uri, name, climb, onProgress) => {
             }
         );
     });
+};
+
+const listFiles = async () => {
+
+const storage = getStorage();
+
+// Create a reference under which you want to list
+const listRef = ref(storage, 'climbs');
+
+// Find all the prefixes and items.
+const listRespounse = await listAll(listRef);
+return listRespounse.items;
 }
 
-export { fbApp, fbStorage, uploadToFirebase }
+export { fbApp, fbStorage, uploadToFirebase, listFiles }
