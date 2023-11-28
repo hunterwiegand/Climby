@@ -22,40 +22,7 @@ const climbCard = () => {
   const [date, setDate] = useState("");
   const [styleType, setStyleType] = useState("");
 
-  console.log(climbArr);
-  const climbs = climbArr;
-
-  const tester = [
-    {
-      date: "10/15/23",
-      description: "This was my very first dyno",
-      file: "https://source.unsplash.com/user/c_v_r/200x200",
-      grade: "4",
-      name: "Sparky",
-      styleType: "vert"
-    },
-    {
-      date: "11/25/23",
-      description: "This was hard",
-      file: "https://source.unsplash.com/user/c_v_r/200x200",
-      grade: "2",
-      name: "Jonny",
-      styleType: "overhang"
-    },
-    {
-      date: "10/15/23",
-      description: "This was easy",
-      file: "https://source.unsplash.com/user/c_v_r/200x200",
-      grade: "4",
-      name: "Dino",
-      styleType: "vert"
-    }
-  ]
-
-  console.log(climbArr);
-  console.log(tester);
-
-  const Item = ({ name, grade, descripiton, file, date, styleType }) =>
+  const Item = ({ name, grade, description, file, date, styleType }) =>
   (
     <View style={styles.container}>
       <ImageBackground
@@ -68,7 +35,7 @@ const climbCard = () => {
           onPress={() => {
             setName(name);
             setGrade(grade);
-            setDescription(descripiton);
+            setDescription(description);
             setDate(date);
             setStyleType(styleType);
             setModalVisible(!modalVisible)
@@ -163,7 +130,7 @@ const climbCard = () => {
               <Text>Grade: {grade}</Text>
               <Text>Style: {styleType}</Text>
               <Text>Date: {date}</Text>
-              <Text>{description}</Text>
+              <Text>Description: {description}</Text>
               <Text>We will add some photos here</Text>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -177,7 +144,7 @@ const climbCard = () => {
 
         <FlatList
           data={climbArr}
-          renderItem={({ item }) => <Item name={item.name} grade={item.grade} descripiton={item.descripiton} file={item.file} date={item.date} styleType={item.styleType} />}
+          renderItem={({ item }) => <Item name={item.name} grade={item.grade} description={item.description} file={item.file} date={item.date} styleType={item.styleType} />}
           keyExtractor={(item) => item.name}
         />
       </View>
