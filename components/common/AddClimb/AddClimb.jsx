@@ -12,7 +12,6 @@ const AddClimb = () => {
         <View style={styles.container}>
             <TouchableOpacity>
                 <Text style={styles.text} onPress={() => {
-                        Alert.alert("Redirct to addClimbPage")
                         router.push("/add")
                     }}>+{"\n"}Add new Climb</Text>
             </TouchableOpacity>

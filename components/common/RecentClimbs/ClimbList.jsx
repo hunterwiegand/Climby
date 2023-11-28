@@ -1,6 +1,5 @@
-import { FlatList, View, Text, SectionList } from "react-native";
+import { FlatList, View, Text } from "react-native";
 import { StyleSheet } from "react-native";
-import { ScrollView, SafeAreaView } from "react-native";
 
 export default function ClimbList({ files }) {
     const Item = ({ name, file, grade }) =>
