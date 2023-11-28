@@ -7,7 +7,7 @@ import { FIREBASE_API_KEY, FIREBASE_STORAGE_BUCKET, FIREBASE_APP_ID, FIREBASE_AU
 // import {...} from "firebase/database";
 // import {...} from "firebase/firestore";
 // import {...} from "firebase/functions";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll, getMetadata } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll, getMetadata, list } from "firebase/storage";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -75,7 +75,8 @@ const listFiles = async () => {
     const listRef = ref(storage, 'climbs');
 
     // Find all the prefixes and items.
-    const listResponse = await listAll(listRef);
+    // const listResponse = await listAll(listRef);
+    const listResponse = await list(listRef, { maxResults: 3 });
     return listResponse.items;
 }
 

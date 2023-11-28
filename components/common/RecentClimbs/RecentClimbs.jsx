@@ -1,14 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import {
-    View,
-    TextInput,
-    Text,
-    Button,
-    TouchableOpacity,
-    Image,
-    Alert
-} from "react-native";
+import { useState } from "react";
 //import { Video, ResizeMode } from 'expo-av';
 
 
@@ -30,7 +21,7 @@ const RecentCLimbs = () => {
     //             return { name: value.fullPath }
     //         })
 
-    //         setFiles(files);
+    //         setFile(files);
     //     });
     // }, []);
 
@@ -58,6 +49,11 @@ const RecentCLimbs = () => {
                 file: "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FClimby-f9634f5b-366a-4190-9ef7-616f98661be2/ImagePicker/7b3b1cd4-9fe3-48b6-868d-a325f4a8a75e.mp4",
                 name: "Zoomy",
                 grade: "V6"
+            },
+            {
+                file: "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252FClimby-91bb8297-2eb8-4def-b960-324105846193/ImagePicker/f3774d05-fbce-40e0-8564-aaf48aa9bcad.mp4",
+                name: "Bones",
+                grade: "V3"
             }
         ]
         setFile(tester)

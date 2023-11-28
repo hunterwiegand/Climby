@@ -12,7 +12,7 @@ const Nav = () => {
     let url = "https://account-d.docusign.com/oauth/auth?response_type=code&scope=signature%20impersonation&client_id=cf6105fd-ed23-4b28-8709-afaa6b79d0e4&redirect_uri=https://google.com"
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <View style={styles.fixToText}>
                 <TouchableOpacity>
                     <Text style={styles.button} onPress={() => {
@@ -39,7 +39,7 @@ const Nav = () => {
                 </TouchableOpacity>
 
             </View>
-        </SafeAreaView>
+        </View>
     )
 };
 

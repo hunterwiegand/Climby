@@ -10,11 +10,9 @@ import { images } from "../constants";
 const home = () => {
     const router = useRouter();
     return (
-        <ScrollView>
-            <Nav></Nav>
-            <AddClimb></AddClimb>
-            <RecentClimbs></RecentClimbs>
-        </ScrollView>
+            <>
+            <Nav></Nav><AddClimb></AddClimb><RecentClimbs></RecentClimbs>
+            </>
     )
 };
 

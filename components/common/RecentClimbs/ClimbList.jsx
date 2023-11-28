@@ -1,9 +1,9 @@
 import { FlatList, View, Text, SectionList } from "react-native";
 import { StyleSheet } from "react-native";
-import { ScrollView } from "react-native";
+import { ScrollView, SafeAreaView } from "react-native";
 
 export default function ClimbList({ files }) {
-    const Item = ({ name, file, grade }) =>  
+    const Item = ({ name, file, grade }) =>
     (
         <View style={styles.item}>
             <Text style={styles.title}>{name}</Text>
@@ -13,12 +13,13 @@ export default function ClimbList({ files }) {
     );
 
     return (
-        <FlatList
-            horizontal
-            data={files}
-            renderItem={({ item }) => <Item name={item.name} file={item.file} grade={item.grade}/>}
-            keyExtractor={(item) => item.file}
-        />
+            <FlatList
+                style={styles.container}
+                data={files}
+                renderItem={({ item }) => <Item style={styles.item} name={item.name} file={item.file} grade={item.grade} />}
+                keyExtractor={(item) => item.file}
+            />
+
     )
 }
 
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     item: {
         padding: 20
     },
-    title : {
+    title: {
 
     }
 })
