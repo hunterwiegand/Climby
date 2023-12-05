@@ -7,7 +7,7 @@ import { FIREBASE_API_KEY, FIREBASE_STORAGE_BUCKET, FIREBASE_APP_ID, FIREBASE_AU
 // import {...} from "firebase/database";
 // import {...} from "firebase/firestore";
 // import {...} from "firebase/functions";
-import { getStorage, ref, uploadBytesResumable, getDownloadURL, listAll, getMetadata, list } from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL, getMetadata, list } from "firebase/storage";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -78,7 +78,7 @@ const listFiles = async () => {
     // const listResponse = await listAll(listRef);
     const listResponse = await list(listRef, { maxResults: 3 });
     return listResponse.items;
-}
+};
 
 const listMetadata = async (fileName) => {
 
@@ -89,6 +89,13 @@ const listMetadata = async (fileName) => {
     // Get metadata properties
     const listResponse = await getMetadata(climbRef);
     return listResponse.customMetadata;
+};
+
+const getDownloadUrl = async (fileName) => {
+    const storage = getStorage();
+    const getResponse = await getDownloadURL (ref(storage, fileName));
+        return getResponse;
 }
 
-export { fbApp, fbStorage, uploadToFirebase, listFiles, listMetadata }
+
+export { fbApp, fbStorage, uploadToFirebase, listFiles, listMetadata, getDownloadUrl }
