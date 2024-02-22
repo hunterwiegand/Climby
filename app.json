@@ -1,5 +1,9 @@
 {
   "expo": {
+    "jsEngine" : "hermes",
+    "ios" : {
+      "jsEngine" : "jsc"
+    },
     "scheme": "acme",
     "web": {
       "bundler": "metro"
