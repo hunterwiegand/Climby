@@ -5,13 +5,16 @@ import { View, Text, ScrollView, SafeAreaView, ImageBackground, StyleSheet } fro
 
 // Local imports
 import { images } from "../constants";
-import { ViewClimbs } from "../components"
+import { ViewClimbs, Nav } from "../components"
 
 const ViewAll = () => {
     const router = useRouter();
 
     return (
-        <ViewClimbs />
+        <ScrollView>
+            <Nav></Nav>
+            <ViewClimbs />
+        </ScrollView>
     )
 };
 
