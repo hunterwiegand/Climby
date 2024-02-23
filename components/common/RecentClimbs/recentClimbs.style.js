@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
         color: "red",
         marginTop: 16,
     },
+        backgroundVideo: {
+            width: 200, 
+            height: 200, 
+            borderRadius: 8
+        }
 });
 
 export default styles
