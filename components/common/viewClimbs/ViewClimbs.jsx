@@ -14,7 +14,7 @@ import { useRouter } from "expo-router";
 
 import styles from "./viewclimbs.style";
 import icons from "../../../assets/icons";
-import ClimbCard from "../Cards/ClimbCard/climbCard";
+import {ClimbCard} from "../Cards/ClimbCard/climbCard";
 
 const ViewClimbs = () => {
 

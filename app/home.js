@@ -11,7 +11,9 @@ const home = () => {
     const router = useRouter();
     return (
             <>
-            <Nav></Nav><AddClimb></AddClimb><RecentClimbs></RecentClimbs>
+            <Nav></Nav>
+            <AddClimb></AddClimb>
+            <RecentClimbs></RecentClimbs>
             </>
     )
 };
