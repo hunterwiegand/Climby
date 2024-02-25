@@ -1,13 +1,20 @@
 import * as React from "react";
-import { FlatList, View, Text, TouchableOpacity } from "react-native";
-import {Video, ResizeMode} from "expo-av";
+import { useState } from "react";
+import { FlatList, View, Text, TouchableOpacity, Alert, Modal, StyleSheet, Pressable } from "react-native";
+import { Video, ResizeMode } from "expo-av";
 
 import styles from "./recentClimbs.style.js"
 
+import ClimbCard from "../Cards/ClimbCard/climbCard"
+
 
 export default function ClimbList({ files }) {
+    // const video = React.useRef(null);
+    //const [status, setStatus] = useState({});
+    const [modalVisible, setModalVisible] = useState(false);
 
     const Item = ({ name, file, grade, url }) =>
+
     //{
     // let isVideo = false;
 
@@ -21,31 +28,58 @@ export default function ClimbList({ files }) {
 
     //video("https://firebasestorage.googleapis.com/v0/b/climby-14603.appspot.com/o/climbs%2F7b3b1cd4-9fe3-48b6-868d-a325f4a8a75e.mp4?alt=media&token=8a8416f3-a695-48f9-91f1-7a2606e9db2c")
     (
-        <View style={styles.item}>
-
-            <TouchableOpacity onPress={() =>{
-                console.log("clicked")
-            }}>
-                <Text style={styles.title}>Name: {name}</Text>
-                <Text style={styles.title}>Url: {url}</Text>
-                <Text style={styles.title}>Grade: {grade}</Text>
-
-                <Video 
-                source={{ uri: url }}   // Can be a URL or a local file.
-                ref={(ref) => {
-                    this.player = ref
-                }}
-                style={styles.backgroundVideo} 
-                resizeMode={ResizeMode.CONTAIN}
-                onPress={() =>
-                    status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-                }/>
-                
-            </TouchableOpacity>
 
 
 
-            <View style={styles.imageContainer}>
+                // <View style={styles.centeredView}>
+                //     <Modal
+                //         animationType="slide"
+                //         transparent={true}
+                //         visible={modalVisible}
+                //         onRequestClose={() => {
+                //             Alert.alert('Modal has been closed.');
+                //             setModalVisible(!modalVisible);
+                //         }}>
+                //         <View style={styles.centeredView}>
+                //             <View style={styles.modalView}>
+                //                 <Text style={styles.title}>Name: {name}</Text>
+                //                 <Text style={styles.title}>Url: {url}</Text>
+                //                 <Text style={styles.title}>Grade: {grade}</Text>
+                //                 <Pressable
+                //                     style={[styles.button, styles.buttonClose]}
+                //                     onPress={() => setModalVisible(!modalVisible)}>
+                //                     <Text style={styles.textStyle}>Hide Modal</Text>
+                //                 </Pressable>
+                //             </View>
+                //         </View>
+                //     </Modal>
+                //     <Pressable
+                //         style={[styles.button, styles.buttonOpen]}
+                //         onPress={() => setModalVisible(true)}>
+                //         <Text style={styles.textStyle}>Show Modal</Text>
+                //     </Pressable>
+                // </View>
+                <ClimbCard></ClimbCard>
+    );
+
+
+
+                {/* <Video
+                    source={{ uri: url }}   // Can be a URL or a local file.
+                    ref={(ref) => {
+                        this.player = ref
+                    }}
+                    style={styles.backgroundVideo}
+                    //isLooping
+                    //onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    resizeMode={ResizeMode.CONTAIN}
+                // onPress={() =>
+                //     status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
+                // } 
+                /> */}
+
+
+
 
                 {/* Rendering the video causes a crash on web. This also isn't working like the video from the addClimbForm */}
                 {/* <Video
@@ -62,9 +96,6 @@ export default function ClimbList({ files }) {
                             status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
                         }
                     /> */}
-            </View>
-        </View>
-    );
 
     // }
 

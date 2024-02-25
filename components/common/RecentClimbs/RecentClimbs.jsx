@@ -7,6 +7,7 @@ import { Text } from "react-native"
 //import styles from "./recentClimbs.style.js";
 import { listFiles, listMetadata, getDownloadUrl } from "../../../firebase-config.js";
 import ClimbList from "./ClimbList.jsx";
+import { ClimbCard, ClimbCards }from "../Cards/ClimbCard/climbCard"
 
 const RecentCLimbs = () => {
 
@@ -166,7 +167,8 @@ const RecentCLimbs = () => {
         //<Text>This is where recent climbs populate</Text>
         //<ClimbList files={file}></ClimbList>
         ( climbArr ? (
-            <ClimbList files={climbArr}></ClimbList>
+            // <ClimbList files={climbArr}></ClimbList>
+            <ClimbCards files={climbArr}></ClimbCards>
         ): (
             <Text>Loading climbs</Text>
         ))

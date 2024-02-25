@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#fff',
         display: 'flex',
+        color: "blue"
     },
     centeredView: {
         flex: 1,
@@ -95,6 +96,23 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         textAlign: 'center',
       },
+      imageContainer: { 
+        borderRadius: 9, 
+        marginBottom: 16,
+        shadowOffset: { width: 0, height: 2 }, 
+        shadowOpacity: 0.4, 
+        shadowRadius: 4, 
+        elevation: 5,
+    },
+    video: { 
+        width: 200, 
+        height: 200, 
+        borderRadius: 8
+    },  
+    errorText: { 
+        color: "red", 
+        marginTop: 16, 
+    }
 })
 
 export default styles;

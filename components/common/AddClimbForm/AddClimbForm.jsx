@@ -90,10 +90,13 @@ const AddClimbForm = () => {
     // Function after form is sumbitted
     const handleSubmit = async () => {
 
+        console.log("hit sumbit");
+        //This isn't working on MAC because of how the ImagePicker collects the video file
+        console.log("file:", file);
         try {
-            const test = new Climb(name, grade, style, date, description, file);
+            const climbData = new Climb(name, grade, style, date, description, file);
             const metadata = {
-                customMetadata : test
+                customMetadata : climbData
             }
             const uploadResponse = await uploadToFirebase(file, file.split("/").pop(), metadata);
             console.log(uploadResponse);
