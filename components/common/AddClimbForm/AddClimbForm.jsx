@@ -66,7 +66,7 @@ const AddClimbForm = () => {
                 // If an image is selected (not cancelled),  
                 // update the file state variable
 
-                if (result.assets[0].uri.includes(".mp4")) {
+                if (result.assets[0].uri.includes(".mp4") || result.assets[0].uri.includes(".mov")) {
                     console.log("This is a video");
                     setIsVideo(true);
                     console.log(result.assets[0]);
